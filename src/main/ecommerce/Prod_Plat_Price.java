@@ -189,7 +189,6 @@ public class Prod_Plat_Price {
 
         public void deletepppID() throws Exception {
 
-            resultset = statement.executeQuery("select * from tahoe_db.product_platform_prices");
 
             System.out.println("Which product ID would you like to delete?");
             int pppID = scan.nextInt();

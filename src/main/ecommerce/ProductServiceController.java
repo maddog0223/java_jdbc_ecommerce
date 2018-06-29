@@ -106,13 +106,15 @@ public class ProductServiceController {
             System.out.println("Enter the product description");
             String product_description = scan.next();
 
-            preparedStatement = connection.prepareStatement("INSERT INTO product(product_name, product_description)"+"VALUES(?,? ) ");
+            preparedStatement = connection.prepareStatement("INSERT INTO product(product_name, product_description)"+"VALUES(?,?) ");
 
             preparedStatement.setString(1,product_name);
             preparedStatement.setString(2,product_description);
 
             preparedStatement.executeUpdate();
 
+            System.out.println();
+            System.out.println("Inserted");
         }catch (SQLException e) {
             e.printStackTrace();}
 
@@ -175,11 +177,10 @@ public class ProductServiceController {
 
     public void deleteproductID() throws Exception {
 
-        connection = controller.getConnection();
-        resultset = statement.executeQuery("select * from tahoe_db.product");
-
         System.out.println("Which product ID would you like to delete?");
         int productID = scan.nextInt();
+
+        connection = controller.getConnection();
 
         preparedStatement =connection.prepareStatement("DELETE FROM tahoe_db.product WHERE idproducts = ? ; ");
 
