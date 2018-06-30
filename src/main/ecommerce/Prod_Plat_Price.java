@@ -90,7 +90,7 @@ public class Prod_Plat_Price {
             try {
 
                 do {
-                    eCom_controller.switchstatementproduct();
+                    eCom_controller.switchstatementppp();
 
                 }while ( prod_plat_price.scan.next() != null);
 
@@ -187,7 +187,7 @@ public class Prod_Plat_Price {
         }
 
 
-        public void deletepppID() throws Exception {
+        public void pppdeleteID() throws Exception {
 
 
             System.out.println("Which product ID would you like to delete?");
@@ -207,7 +207,7 @@ public class Prod_Plat_Price {
 
         }
 
-        public void update() throws Exception{
+        public void pppupdate() throws Exception{
 
             System.out.println("for which ID would you like to update?");
            int pppid = scan.nextInt();

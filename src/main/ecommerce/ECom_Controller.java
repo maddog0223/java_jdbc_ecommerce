@@ -6,6 +6,7 @@ public class ECom_Controller {
 
     Scanner scan = new Scanner(System.in);
     ProductServiceController pscontroller = new ProductServiceController();
+    Prod_Plat_Price pppconteroller = new Prod_Plat_Price();
 
     public void menu(){
 
@@ -41,4 +42,30 @@ public class ECom_Controller {
 
             }
         }
+
+    public void switchstatementppp()throws Exception{
+
+        int input = scan.nextInt();
+
+        switch (input){
+
+            case 2: pppconteroller.pppList();
+
+                return;
+
+
+            case 3:pppconteroller.pppinsert();
+
+                return;
+
+            case 4: pppconteroller.pppdeleteID();
+
+                return;
+
+
+            case 5: pppconteroller.pppupdate();
+
+
+        }
+    }
     }
