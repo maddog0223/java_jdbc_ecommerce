@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Prod_Plat_Price {
+public class Prod_Plat_PriceServiceController{
 
     private int pppid;
     private int proid;
@@ -65,7 +65,7 @@ public class Prod_Plat_Price {
         ResultSet resultset = null;
         Scanner scan = new Scanner(System.in);
 
-    Prod_Plat_Price() {
+    Prod_Plat_PriceServiceController() {
 
             this.controller = new ConnectionController();
 
@@ -74,7 +74,7 @@ public class Prod_Plat_Price {
 
         public static void main(String[] args) throws Exception {
 
-            Prod_Plat_Price prod_plat_price = new Prod_Plat_Price();
+            Prod_Plat_PriceServiceController prod_plat_price = new Prod_Plat_PriceServiceController();
             ECom_Controller eCom_controller = new ECom_Controller();
 
             ConnectionController.getConnection();
@@ -144,11 +144,11 @@ public class Prod_Plat_Price {
             statement = controller.getStatement();
             resultset = statement.executeQuery("SELECT * FROM tahoe_db.product_platform_prices;");
 
-            ArrayList<Prod_Plat_Price> ppp = new ArrayList();
+            ArrayList<Prod_Plat_PriceServiceController> ppp = new ArrayList();
 
             ppp = mapResultSetToPPP(resultset);
 
-            for (Prod_Plat_Price p : ppp) {
+            for (Prod_Plat_PriceServiceController p : ppp) {
 
                 System.out.println(p.toString());
             }
@@ -163,15 +163,15 @@ public class Prod_Plat_Price {
 
         }
 
-        private ArrayList<Prod_Plat_Price> mapResultSetToPPP(ResultSet resultSet) {
+        private ArrayList<Prod_Plat_PriceServiceController> mapResultSetToPPP(ResultSet resultSet) {
 
 
-            ArrayList<Prod_Plat_Price> List = new ArrayList();
+            ArrayList<Prod_Plat_PriceServiceController> List = new ArrayList();
 
             // ResultSet is initially before the first data set
             try {
                 while (resultSet.next()) {
-                    Prod_Plat_Price p = new Prod_Plat_Price();
+                    Prod_Plat_PriceServiceController p = new Prod_Plat_PriceServiceController();
                     p.setPppid(resultSet.getInt("idproduct_platform_prices"));
                     p.setPrice(resultSet.getDouble("price"));
                     p.setPlatid(resultSet.getInt("platform_id"));

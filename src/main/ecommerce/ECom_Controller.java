@@ -6,66 +6,113 @@ public class ECom_Controller {
 
     Scanner scan = new Scanner(System.in);
     ProductServiceController pscontroller = new ProductServiceController();
-    Prod_Plat_Price pppconteroller = new Prod_Plat_Price();
-
-    public void menu(){
-
-            System.out.println("Press 2 for LIST");
-            System.out.println("Press 3 for INSERT");
-            System.out.println("Press 4 for DELETE");
-            System.out.println("Press 5 for UPDATE");
-            return;
-        }
-
-        public void switchstatementproduct()throws Exception{
-
-        int input = scan.nextInt();
-
-        switch (input){
-
-            case 2: pscontroller.productList();
-
-            return;
+    PlatfromServiceController platscontorller = new PlatfromServiceController();
+    Prod_Plat_PriceServiceController pppconteroller = new Prod_Plat_PriceServiceController();
 
 
-            case 3: pscontroller.productinsert();
+    // General Description method for key input in a switch statement
 
-            return;
+    public void menu() {
 
-            case 4: pscontroller.deleteproductID();
+        System.out.println("Press 2 for LIST");
+        System.out.println("Press 3 for INSERT");
+        System.out.println("Press 4 for DELETE");
+        System.out.println("Press 5 for UPDATE");
+        return;
+    }
 
-            return;
+    // Switch Controller Statement for Product
 
-
-            case 5: pscontroller.update();
-
-
-            }
-        }
-
-    public void switchstatementppp()throws Exception{
+    public void switchstatementproduct() throws Exception {
 
         int input = scan.nextInt();
 
-        switch (input){
+        switch (input) {
 
-            case 2: pppconteroller.pppList();
-
-                return;
-
-
-            case 3:pppconteroller.pppinsert();
-
-                return;
-
-            case 4: pppconteroller.pppdeleteID();
+            case 2:
+                pscontroller.productList();
 
                 return;
 
 
-            case 5: pppconteroller.pppupdate();
+            case 3:
+                pscontroller.productinsert();
+
+                return;
+
+            case 4:
+                pscontroller.deleteproductID();
+
+                return;
+
+
+            case 5:
+                pscontroller.update();
 
 
         }
     }
+
+    // Switch Controller Statement for Platform
+
+    public void switchstatementplatform() throws Exception{
+
+        int platinput = scan.nextInt();
+        switch (platinput){
+
+            case 2:
+                platscontorller.platformList();
+
+                return;
+
+            case 3:
+                platscontorller.platformInsert();
+
+                return;
+
+            case 4:
+                platscontorller.platformDeleteID();
+
+                return;
+
+            case 5:
+                platscontorller.platformUpdate();
+
+                return;
+        }
     }
+
+    // Switch Controller Statement for PPP
+
+    public void switchstatementppp() throws Exception {
+
+        int input = scan.nextInt();
+
+        switch (input) {
+
+            case 2:
+                pppconteroller.pppList();
+
+                return;
+
+
+            case 3:
+                pppconteroller.pppinsert();
+
+                return;
+
+            case 4:
+                pppconteroller.pppdeleteID();
+
+                return;
+
+
+            case 5:
+                pppconteroller.pppupdate();
+
+
+        }
+    }
+
+
+}

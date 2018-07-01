@@ -134,11 +134,11 @@ public class ProductServiceController {
         statement = controller.getStatement();
         resultset = statement.executeQuery("SELECT * FROM tahoe_db.product;");
 
-        ArrayList<Product> products;
+        ArrayList<ProductServiceController> products;
 
         products = mapResultSetToProducts(resultset);
 
-        for (Product p : products) {
+        for (ProductServiceController p : products) {
 
             System.out.println(p.toString());
         }
@@ -153,15 +153,15 @@ public class ProductServiceController {
 
     }
 
-    private ArrayList<Product> mapResultSetToProducts(ResultSet resultSet) {
+    private ArrayList<ProductServiceController> mapResultSetToProducts(ResultSet resultSet) {
 
 
-        ArrayList<Product> productList = new ArrayList();
+        ArrayList<ProductServiceController> productList = new ArrayList();
 
         // ResultSet is initially before the first data set
         try {
             while (resultSet.next()) {
-                Product p = new Product();
+                ProductServiceController p = new ProductServiceController();
                 p.setProdescription(resultSet.getString("product_description"));
                 p.setProname(resultSet.getString("product_name"));
                 p.setProductID(resultSet.getInt("idproducts"));
