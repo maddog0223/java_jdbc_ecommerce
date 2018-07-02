@@ -129,28 +129,34 @@ public class ProductServiceController {
 
 
 
-    public void productList() throws Exception {
-
-        statement = controller.getStatement();
-        resultset = statement.executeQuery("SELECT * FROM tahoe_db.product;");
-
-        ArrayList<ProductServiceController> products;
-
-        products = mapResultSetToProducts(resultset);
-
-        for (ProductServiceController p : products) {
-
-            System.out.println(p.toString());
-        }
+    public void productList() {
 
         try {
-            controller.closeConnection(connection, statement);
-        }catch (Exception e) {
+            statement = controller.getStatement();
+            resultset = statement.executeQuery("SELECT * FROM tahoe_db.product;");
 
+            ArrayList<ProductServiceController> products;
+
+            products = mapResultSetToProducts(resultset);
+
+            for (ProductServiceController p : products) {
+
+                System.out.println(p.toString());
+            }
+
+        } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+
+
+            try {
+                controller.closeConnection(connection, statement);
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+
         }
-
-
     }
 
     private ArrayList<ProductServiceController> mapResultSetToProducts(ResultSet resultSet) {
@@ -196,29 +202,35 @@ public class ProductServiceController {
 
     }
 
-    public void update() throws Exception{
+    public void update() throws Exception {
 
-        System.out.println("for which ID number would you like to update?");
-        int id = scan.nextInt();
-        System.out.println("update for product name");
-        String name = scan.next();
-        System.out.println("update product description");
-        String description = scan.next();
 
-        connection = controller.getConnection();
-        preparedStatement = connection.prepareStatement("UPDATE tahoe_db.product SET product_name = ?, product_description = ? WHERE idproducts = ?");
+        try {
+            System.out.println("for which ID number would you like to update?");
+            int id = scan.nextInt();
+            System.out.println("update for product name");
+            String name = scan.next();
+            System.out.println("update product description");
+            String description = scan.next();
 
-        preparedStatement.setString(1,name);
-        preparedStatement.setString(2,description);
-        preparedStatement.setInt(3,id);
+            connection = controller.getConnection();
+            preparedStatement = connection.prepareStatement("UPDATE tahoe_db.product SET product_name = ?, product_description = ? WHERE idproducts = ?");
 
-        try{
-            controller.closeConnection(connection,preparedStatement);
-        }catch (Exception e){
-
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, description);
+            preparedStatement.setInt(3, id);
+        } catch (Exception e) {
             e.printStackTrace();
-        }
+        } finally {
 
+            try {
+                controller.closeConnection(connection, preparedStatement);
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+
+        }
     }
 
 }

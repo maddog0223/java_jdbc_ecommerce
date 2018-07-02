@@ -11,7 +11,7 @@ public class ECom_Controller {
 
 
     // General Description method for key input in a switch statement
-
+    // Direction to which number does what to the database
     public void menu() {
 
         System.out.println("Press 2 for LIST");
